@@ -1,5 +1,7 @@
-from tdd import __version__
+from tdd.game import Game
 
-
-def test_version():
-    assert __version__ == '0.1.0'
+def test_gutter_game():
+    game = Game()
+    game.roll(0)
+    
+    assert game.score() == 0
