@@ -3,10 +3,10 @@ from typing_extensions import IntVar
 
 class Game(object):
     def __init__(self) -> None:
-        return
+        self.currentScore = 0
     
     def roll(self, count) -> None:
-        return
+        self.currentScore += count
     
-    def score(self) -> IntVar:
-        return 0
+    def score(self) -> int:
+        return self.currentScore
