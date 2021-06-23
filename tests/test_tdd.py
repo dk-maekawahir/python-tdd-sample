@@ -1,17 +1,18 @@
 from tdd.game import Game
 
-def test_gutter_game():
-    game = Game()
+class TestBowlingGame(object):
+    def setup_method(self, method):
+        self.game = Game()
 
-    for i in range(20):
-        game.roll(0)
-    
-    assert game.score() == 0
 
-def test_all1_game():
-    game = Game()
-    
-    for i in range(20):
-        game.roll(1)
-    
-    assert game.score() == 20
+    def test_gutter_game(self):
+        for i in range(20):
+            self.game.roll(0)
+        
+        assert self.game.score() == 0
+
+    def test_all1_game(self):        
+        for i in range(20):
+            self.game.roll(1)
+        
+        assert self.game.score() == 20
