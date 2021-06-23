@@ -18,6 +18,17 @@ class TestBowlingGame(object):
         self.roll_many(17, 0)
         assert self.game.score() == 16
 
+    def test_strike_game(self):
+        self.roll_strike()
+        self.game.roll(3)
+        self.game.roll(5)
+
+        self.roll_many(16, 0)
+        assert self.game.score() == 26
+
+    def roll_strike(self):
+        self.game.roll(10)
+
     def roll_spare(self):
         self.game.roll(5)
         self.game.roll(5)
