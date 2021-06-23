@@ -4,15 +4,25 @@ class TestBowlingGame(object):
     def setup_method(self, method):
         self.game = Game()
 
-
     def test_gutter_game(self):
-        for i in range(20):
-            self.game.roll(0)
-        
+        self.roll_many(20, 0)        
         assert self.game.score() == 0
 
     def test_all1_game(self):        
-        for i in range(20):
-            self.game.roll(1)
-        
+        self.roll_many(20, 1)
         assert self.game.score() == 20
+
+    def test_spare_game(self):
+        self.roll_spare()
+        self.game.roll(3)
+        self.roll_many(17, 0)
+        assert self.game.score() == 16
+
+    def roll_spare(self):
+        self.game.roll(5)
+        self.game.roll(5)
+    
+    def roll_many(self, roll_count, pins):
+        for i in range(roll_count):
+            self.game.roll(pins)
+        

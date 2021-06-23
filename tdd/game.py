@@ -1,9 +1,24 @@
 class Game(object):
     def __init__(self) -> None:
-        self.currentScore = 0
+        self.rolls = []
     
     def roll(self, count) -> None:
-        self.currentScore += count
+        self.rolls.append(count)
     
     def score(self) -> int:
-        return self.currentScore
+        score = 0
+        roll_index = 0
+
+        for frame in range(10):
+            score += self.frame_score(roll_index)
+            if(self.is_spare(roll_index)):
+                score += self.rolls[roll_index + 2]
+            roll_index += 2
+        return score
+
+    def is_spare(self, roll_index):
+        return self.frame_score(roll_index) == 10
+
+    def frame_score(self, roll_index):
+        return self.rolls[roll_index] + self.rolls[roll_index + 1]
+    
