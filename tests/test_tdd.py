@@ -25,6 +25,10 @@ class TestBowlingGame(object):
 
         self.roll_many(16, 0)
         assert self.game.score() == 26
+    
+    def test_perfect_game(self):
+        self.roll_many(12, 10)
+        assert self.game.score() == 300
 
     def roll_strike(self):
         self.game.roll(10)
