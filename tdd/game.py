@@ -1,6 +1,3 @@
-from typing_extensions import IntVar
-
-
 class Game(object):
     def __init__(self) -> None:
         self.currentScore = 0
